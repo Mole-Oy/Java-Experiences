@@ -1,0 +1,4 @@
+Assignment 4 Psuedocode
+
+Public FileStructure(String fileObjectName) throws FileObject Exception
+-

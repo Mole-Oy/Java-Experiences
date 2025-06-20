@@ -1,0 +1,30 @@
+private boolean isRun (Set<Card> set) {
+		
+		int n = set.getLength();
+		
+		if (n <= 2) return false; // Run must be at least 3 in length.
+		
+		int[] rankArr = new int[13];
+		for (int i = 0; i < 13; i++) rankArr[i] = 0; // Ensure the default values are all 0.
+		
+		for (int i = 0; i < n; i++) {
+			rankArr[set.getElement(i).getRunRank()-1] += 1;
+		}
+
+		// Now search in the array for a sequence of n consecutive 1's.
+		int streak = 0;
+		int maxStreak = 0;
+		for (int i = 0; i < 13; i++) {`
+			if (rankArr[i] == 1) {
+				streak++;
+				if (streak > maxStreak) maxStreak = streak;
+			} else {
+				streak = 0;
+			}
+		}
+		if (maxStreak == n) { // Check if this is the maximum streak.
+			return true;
+		} else {
+			return false;
+		}
+	}
